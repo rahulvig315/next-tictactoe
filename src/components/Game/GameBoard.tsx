@@ -1,6 +1,6 @@
 import { Players } from "@/types/game"
 import { useState } from "react"
-import GameBoardBox from "./GameBoardBox"
+import GameBoardBoxRow from "./GameBoardBoxRow"
 
 type Props = {
     currentPlayer: Players,
@@ -12,6 +12,7 @@ type Plays = {
     'player2': number[],
 }
 
+const boxRows = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 export default function GameBoard({ currentPlayer, setPlayer }: Props) {
     const [plays, setPlays] = useState<Plays>({
         'player1': [],
@@ -26,57 +27,12 @@ export default function GameBoard({ currentPlayer, setPlayer }: Props) {
     return (
         <div className="cursor-pointer">
             <div>
-                <div className="flex justify-center">
-                    <GameBoardBox
-                        box={1}
-                        update={updatePlayer}
-                        currentPlayer={currentPlayer}
-                    />
-                    <GameBoardBox
-                        box={2}
-                        update={updatePlayer}
-                        currentPlayer={currentPlayer}
-                    />
-                    <GameBoardBox
-                        box={3}
-                        update={updatePlayer}
-                        currentPlayer={currentPlayer}
-                    />
-                </div>
-                <div className="flex justify-center">
-                    <GameBoardBox
-                        box={4}
-                        update={updatePlayer}
-                        currentPlayer={currentPlayer}
-                    />
-                    <GameBoardBox
-                        box={5}
-                        update={updatePlayer}
-                        currentPlayer={currentPlayer}
-                    />
-                    <GameBoardBox
-                        box={6}
-                        update={updatePlayer}
-                        currentPlayer={currentPlayer}
-                    />
-                </div>
-                <div className="flex justify-center">
-                    <GameBoardBox
-                        box={7}
-                        update={updatePlayer}
-                        currentPlayer={currentPlayer}
-                    />
-                    <GameBoardBox
-                        box={8}
-                        update={updatePlayer}
-                        currentPlayer={currentPlayer}
-                    />
-                    <GameBoardBox
-                        box={9}
-                        update={updatePlayer}
-                        currentPlayer={currentPlayer}
-                    />
-                </div>
+                {
+                    boxRows.map((row) => (
+                        <GameBoardBoxRow key={row[0]} boxes={row} currentPlayer={currentPlayer} updatePlayer={updatePlayer} />
+                    ))
+                }
+
             </div>
             <h1>Current Player: {currentPlayer}</h1>
         </div>
