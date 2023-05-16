@@ -1,10 +1,10 @@
-import GameMenu from "@/components/Game/GameMenu";
+import Game from "@/components/Game/Game";
 
 
 export default function Home() {
   return (
-    <main className="flex-col mx-auto my-auto text-center p-10">
-      <GameMenu />
+    <main className="flex justify-center h-screen">
+      <Game />
     </main>
   )
 }
