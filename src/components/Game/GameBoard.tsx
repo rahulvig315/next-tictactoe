@@ -7,20 +7,11 @@ type Props = {
     setPlayer?: (player: Players) => void,
 }
 
-type Plays = {
-    'p1': number[],
-    'p2': number[],
-}
-
 const boxRows = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 export default function GameBoard({ }: Props) {
     const [player, setPlayer] = useState<Players>('p1');
-    const [plays, setPlays] = useState<Plays>({
-        'p1': [],
-        'p2': [],
-    })
     const updatePlayer = (box: number) => {
-        setPlayer((player === 'p1' || player === '') ? 'p2' : 'p1')
+        setPlayer((player === 'p1') ? 'p2' : 'p1')
     }
 
 
