@@ -4,7 +4,7 @@ type Props = {
     gameMode: GameModes,
 }
 
-const gameModesText = {
+const gameModesText: Record<string, any> = {
     '': "Test your skills against another player or CPU",
     'pvp': 'Player 1 vs. Player 2',
     'pvc': 'Player vs. CPU',
