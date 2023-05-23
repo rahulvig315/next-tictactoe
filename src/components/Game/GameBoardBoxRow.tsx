@@ -1,3 +1,4 @@
+import { Players } from "@/types/game";
 import GameBoardBox from "./GameBoardBox";
 
 type Props = {
@@ -10,12 +11,7 @@ function GameBoardBoxRow({ boxes, currentPlayer, updatePlayer }: Props) {
     return (
         <div className="flex justify-center">
             {boxes.map((box => (
-                <GameBoardBox
-                    key={box}
-                    box={box}
-                    update={updatePlayer}
-                    currentPlayer={currentPlayer}
-                />
+                <GameBoardBox box={box} key={box} update={updatePlayer} player={currentPlayer as Players} />
             )))}
         </div>
     )

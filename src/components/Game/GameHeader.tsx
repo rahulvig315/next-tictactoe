@@ -15,10 +15,10 @@ const gameModesText = {
 export default function GameHeader({ gameMode }: Props) {
     return (
         <>
-            <h1 className="text-8xl font-light">
-                Tic-Tac-Toe
+            <h1 className="text-8xl font-light p-5 text-blue-500">
+                Tic Tac Toe
             </h1>
-            <h3 className={`text-xl font-extralight ${gameMode === '' && 'italic'}`}>
+            <h3 className={`text-xl font-extralight text-green-500 ${gameMode === '' && 'italic'}`}>
                 {gameModesText[gameMode]}
             </h3 >
         </>

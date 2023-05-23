@@ -17,7 +17,7 @@ export default function GameMenu({ setGameMode, gameMode }: Props) {
         <>
             {gameMode === '' &&
                 <>
-                    <h2 className="text-3xl font-light">
+                    <h2 className="text-3xl font-light text-red-500 p-10">
                         Choose your game mode
                     </h2>
 

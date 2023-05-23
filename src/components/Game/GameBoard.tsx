@@ -3,38 +3,38 @@ import { useState } from "react"
 import GameBoardBoxRow from "./GameBoardBoxRow"
 
 type Props = {
-    currentPlayer: Players,
-    setPlayer: (player: Players) => void,
+    player?: Players,
+    setPlayer?: (player: Players) => void,
 }
 
 type Plays = {
-    'player1': number[],
-    'player2': number[],
+    'p1': number[],
+    'p2': number[],
 }
 
 const boxRows = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-export default function GameBoard({ currentPlayer, setPlayer }: Props) {
+export default function GameBoard({ }: Props) {
+    const [player, setPlayer] = useState<Players>('p1');
     const [plays, setPlays] = useState<Plays>({
-        'player1': [],
-        'player2': [],
+        'p1': [],
+        'p2': [],
     })
     const updatePlayer = (box: number) => {
-        setPlayer(currentPlayer === 'player1' ? 'player2' : 'player1')
-
+        setPlayer((player === 'p1' || player === '') ? 'p2' : 'p1')
     }
 
 
     return (
         <div className="cursor-pointer">
-            <div>
+            <div className="border-collapse">
                 {
                     boxRows.map((row) => (
-                        <GameBoardBoxRow key={row[0]} boxes={row} currentPlayer={currentPlayer} updatePlayer={updatePlayer} />
+                        <GameBoardBoxRow key={row[0]} boxes={row} updatePlayer={updatePlayer} currentPlayer={player} />
                     ))
                 }
 
             </div>
-            <h1>Current Player: {currentPlayer}</h1>
+            <h1>Current Player: <span className="text-red-500">{player}</span></h1>
         </div>
     )
 }
